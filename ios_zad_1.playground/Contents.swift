@@ -3,6 +3,16 @@ enum Reservation{
     case NotReserved
 }
 
+//sprawdza stan rezerwacji sali i zwraca stringa
+func checkReservation(state: Reservation) -> String{
+    switch state{
+    case .Reserved:
+        return "reserved"
+    case .NotReserved:
+        return "not reserved"
+    }
+}
+
 class SalaKonf{
     var name:String = ""
     var state:Reservation
@@ -23,7 +33,8 @@ class SalaKonf{
     //wyswietlenie name - state - time w przypadku, gdy sala jest zarezerwowana
     //w przeciwnym razie wyswietlenie name - state
     func description(){
-        (state == .Reserved) ? print("\(name) - \(state) - \(time)") : print("\(name) - \(state)")
+        let status = checkReservation(state: state)
+        (state == .Reserved) ? print("\(name) - \(status) - \(time)") : print("\(name) - \(status)")
     }
 }
 
@@ -31,26 +42,17 @@ var arrayReserved = [SalaKonf]() //tablica z salami zarezerwowanymi
 var arrayNotReserved = [SalaKonf]() //tablica z salami niezarezerwowanymi
 var array = [SalaKonf]() // tablica ze wszystkimi salami
 
-var s1 = SalaKonf(newName: "Sala nr 1", reservation: .Reserved, t: 60)
-array.append(s1)
-var s2 = SalaKonf(newName: "Sala nr 2", reservation: .NotReserved)
-array.append(s2)
-var s3 = SalaKonf(newName: "Sala nr 3", reservation: .Reserved, t: 180)
-array.append(s3)
-var s4 = SalaKonf(newName: "Sala nr 4", reservation: .Reserved, t: 120)
-array.append(s4)
-var s5 = SalaKonf(newName: "Sala nr 5", reservation: .NotReserved)
-array.append(s5)
-var s6 = SalaKonf(newName: "Sala nr 6", reservation: .Reserved, t: 30)
-array.append(s6)
-var s7 = SalaKonf(newName: "Sala nr 7", reservation: .Reserved, t: 90)
-array.append(s7)
-var s8 = SalaKonf(newName: "Sala nr 8", reservation: .NotReserved)
-array.append(s8)
-var s9 = SalaKonf(newName: "Sala nr 9", reservation: .NotReserved)
-array.append(s9)
-var s10 = SalaKonf(newName: "Sala nr 10", reservation: .Reserved, t: 300)
-array.append(s10)
+//dodanie 10 sal do tablicy array
+array.append(SalaKonf(newName: "Sala nr 1", reservation: .Reserved, t: 60))
+array.append(SalaKonf(newName: "Sala nr 2", reservation: .NotReserved))
+array.append(SalaKonf(newName: "Sala nr 3", reservation: .Reserved, t: 180))
+array.append(SalaKonf(newName: "Sala nr 4", reservation: .Reserved, t: 120))
+array.append(SalaKonf(newName: "Sala nr 5", reservation: .NotReserved))
+array.append(SalaKonf(newName: "Sala nr 6", reservation: .Reserved, t: 30))
+array.append(SalaKonf(newName: "Sala nr 7", reservation: .Reserved, t: 90))
+array.append(SalaKonf(newName: "Sala nr 8", reservation: .NotReserved))
+array.append(SalaKonf(newName: "Sala nr 9", reservation: .NotReserved))
+array.append(SalaKonf(newName: "Sala nr 10", reservation: .Reserved, t: 300))
 
 //rozdzielenie do dwóch różnych tablic ze względu na rezerwacje
 for i in array{
