@@ -1,6 +1,5 @@
 enum Reservation{
-    case Reserved
-    case NotReserved
+    case Reserved, NotReserved
 }
 
 //sprawdza stan rezerwacji sali i zwraca stringa
@@ -58,7 +57,6 @@ array.append(SalaKonf(newName: "Sala nr 10", reservation: .Reserved, t: 300))
 for i in array{
     if (i.state == .Reserved){
         arrayReserved.append(i)
-        
     } else {
         arrayNotReserved.append(i)
     }
@@ -69,7 +67,7 @@ for i in arrayReserved{
     i.description()
 }
 //wyswietlenie calej listy niezarezerwowanych sal
-print("Not reserved list:")
+print("\nNot reserved list:")
 for i in arrayNotReserved{
     i.description()
 }
