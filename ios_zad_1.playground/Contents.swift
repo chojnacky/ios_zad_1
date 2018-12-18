@@ -20,15 +20,16 @@ class SalaKonf{
         state = reservation
         time = 0
     }
-    
+    //wyswietlenie name - state - time w przypadku, gdy sala jest zarezerwowana
+    //w przeciwnym razie wyswietlenie name - state
     func description(){
         (state == res) ? print("\(name) - \(state) - \(time)") : print("\(name) - \(state)")
     }
 }
 
-var arrayReserved = [SalaKonf]()
-var arrayNotReserved = [SalaKonf]()
-var array = [SalaKonf]()
+var arrayReserved = [SalaKonf]() //tablica z salami zarezerwowanymi
+var arrayNotReserved = [SalaKonf]() //tablica z salami niezarezerwowanymi
+var array = [SalaKonf]() // tablica ze wszystkimi salami
 
 var s1 = SalaKonf(newName: "Sala nr 1", reservation: res, t: 60)
 array.append(s1)
@@ -59,13 +60,14 @@ for i in array{
         arrayNotReserved.append(i)
     }
 }
-
+//wyswietlenie calej listy zarezerwowanych sal
 print("Reserved list:")
 for i in arrayReserved{
     i.description()
 }
-
+//wyswietlenie calej listy niezarezerwowanych sal
 print("Not reserved list:")
 for i in arrayNotReserved{
     i.description()
 }
+
