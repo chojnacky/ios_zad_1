@@ -17,5 +17,9 @@ class SalaKonf{
         state = reservation
         time = 0
     }
+    
+    func description(){
+        (state == "reserved") ? print("\(name) - \(state) - \(time)") : print("\(name) - \(state)")
+    }
 }
 
