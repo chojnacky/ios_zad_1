@@ -2,16 +2,6 @@ enum Reservation{
     case Reserved, NotReserved
 }
 
-//sprawdza stan rezerwacji sali i zwraca stringa
-func checkReservation(state: Reservation) -> String{
-    switch state{
-    case .Reserved:
-        return "reserved"
-    case .NotReserved:
-        return "not reserved"
-    }
-}
-
 class SalaKonf{
     var name:String = ""
     var state:Reservation
@@ -35,6 +25,15 @@ class SalaKonf{
         let status = checkReservation(state: state)
         (state == .Reserved) ? print("\(name) - \(status) - \(time)") : print("\(name) - \(status)")
     }
+    //sprawdza stan rezerwacji sali i zwraca stringa
+    func checkReservation(state: Reservation) -> String{
+        switch state{
+        case .Reserved:
+            return "reserved"
+        case .NotReserved:
+            return "not reserved"
+        }
+    }
 }
 
 var arrayReserved = [SalaKonf]() //tablica z salami zarezerwowanymi
@@ -55,11 +54,7 @@ array.append(SalaKonf(newName: "Sala nr 10", reservation: .Reserved, t: 300))
 
 //rozdzielenie do dwóch różnych tablic ze względu na rezerwacje
 for i in array{
-    if (i.state == .Reserved){
-        arrayReserved.append(i)
-    } else {
-        arrayNotReserved.append(i)
-    }
+    (i.state == .Reserved) ? arrayReserved.append(i) : arrayNotReserved.append(i)
 }
 //wyswietlenie calej listy zarezerwowanych sal
 print("Reserved list:")
