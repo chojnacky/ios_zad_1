@@ -35,6 +35,14 @@ class SalaKonf{
         }
     }
 }
+//funkcja wywołująca metodę description dla całej zawartości tablicy podanej w argumencie
+//oraz opisująca dane wyniki w argumencie label
+func printHalls(array:[SalaKonf], label:String){
+    print(label)
+    for index in array{
+        index.description()
+    }
+}
 
 var arrayReserved = [SalaKonf]() //tablica z salami zarezerwowanymi
 var arrayNotReserved = [SalaKonf]() //tablica z salami niezarezerwowanymi
@@ -57,13 +65,7 @@ for i in array{
     (i.state == .Reserved) ? arrayReserved.append(i) : arrayNotReserved.append(i)
 }
 //wyswietlenie calej listy zarezerwowanych sal
-print("Reserved list:")
-for i in arrayReserved{
-    i.description()
-}
+printHalls(array: arrayReserved, label: "\nReserved list:")
 //wyswietlenie calej listy niezarezerwowanych sal
-print("\nNot reserved list:")
-for i in arrayNotReserved{
-    i.description()
-}
+printHalls(array: arrayNotReserved, label: "\nNot reserved list:")
 
